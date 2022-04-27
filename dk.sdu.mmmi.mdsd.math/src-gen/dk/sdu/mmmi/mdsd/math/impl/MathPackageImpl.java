@@ -6,6 +6,8 @@ package dk.sdu.mmmi.mdsd.math.impl;
 import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.Div;
 import dk.sdu.mmmi.mdsd.math.Expression;
+import dk.sdu.mmmi.mdsd.math.External;
+import dk.sdu.mmmi.mdsd.math.ExternalUse;
 import dk.sdu.mmmi.mdsd.math.LetBinding;
 import dk.sdu.mmmi.mdsd.math.MathExp;
 import dk.sdu.mmmi.mdsd.math.MathFactory;
@@ -13,7 +15,9 @@ import dk.sdu.mmmi.mdsd.math.MathNumber;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
 import dk.sdu.mmmi.mdsd.math.Minus;
 import dk.sdu.mmmi.mdsd.math.Mult;
+import dk.sdu.mmmi.mdsd.math.Parenthesis;
 import dk.sdu.mmmi.mdsd.math.Plus;
+import dk.sdu.mmmi.mdsd.math.Program;
 import dk.sdu.mmmi.mdsd.math.VarBinding;
 import dk.sdu.mmmi.mdsd.math.VariableUse;
 
@@ -37,14 +41,21 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass mathExpEClass = null;
+  private EClass programEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass varBindingEClass = null;
+  private EClass externalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mathExpEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -58,13 +69,6 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass letBindingEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass bindingEClass = null;
 
   /**
@@ -72,7 +76,28 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass letBindingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass variableUseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalUseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varBindingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -87,6 +112,13 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   private EClass minusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parenthesisEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,6 +210,83 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   @Override
+  public EClass getProgram()
+  {
+    return programEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProgram_Name()
+  {
+    return (EAttribute)programEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_Ext()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_Math()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternal()
+  {
+    return externalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExternal_Name()
+  {
+    return (EAttribute)externalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExternal_Params()
+  {
+    return (EAttribute)externalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getMathExp()
   {
     return mathExpEClass;
@@ -200,31 +309,31 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   @Override
-  public EClass getVarBinding()
-  {
-    return varBindingEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getVarBinding_Expression()
-  {
-    return (EReference)varBindingEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getExpression()
   {
     return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBinding()
+  {
+    return bindingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBinding_Name()
+  {
+    return (EAttribute)bindingEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -266,28 +375,6 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   @Override
-  public EClass getBinding()
-  {
-    return bindingEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getBinding_Name()
-  {
-    return (EAttribute)bindingEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getVariableUse()
   {
     return variableUseEClass;
@@ -302,6 +389,61 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
   public EReference getVariableUse_Ref()
   {
     return (EReference)variableUseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalUse()
+  {
+    return externalUseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalUse_Ref()
+  {
+    return (EReference)externalUseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalUse_Params()
+  {
+    return (EReference)externalUseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVarBinding()
+  {
+    return varBindingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVarBinding_Expression()
+  {
+    return (EReference)varBindingEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -368,6 +510,28 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
   public EReference getMinus_Right()
   {
     return (EReference)minusEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParenthesis()
+  {
+    return parenthesisEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParenthesis_Exp()
+  {
+    return (EReference)parenthesisEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -489,23 +653,36 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     isCreated = true;
 
     // Create classes and their features
+    programEClass = createEClass(PROGRAM);
+    createEAttribute(programEClass, PROGRAM__NAME);
+    createEReference(programEClass, PROGRAM__EXT);
+    createEReference(programEClass, PROGRAM__MATH);
+
+    externalEClass = createEClass(EXTERNAL);
+    createEAttribute(externalEClass, EXTERNAL__NAME);
+    createEAttribute(externalEClass, EXTERNAL__PARAMS);
+
     mathExpEClass = createEClass(MATH_EXP);
     createEReference(mathExpEClass, MATH_EXP__VARIABLES);
 
-    varBindingEClass = createEClass(VAR_BINDING);
-    createEReference(varBindingEClass, VAR_BINDING__EXPRESSION);
-
     expressionEClass = createEClass(EXPRESSION);
+
+    bindingEClass = createEClass(BINDING);
+    createEAttribute(bindingEClass, BINDING__NAME);
 
     letBindingEClass = createEClass(LET_BINDING);
     createEReference(letBindingEClass, LET_BINDING__BINDING);
     createEReference(letBindingEClass, LET_BINDING__BODY);
 
-    bindingEClass = createEClass(BINDING);
-    createEAttribute(bindingEClass, BINDING__NAME);
-
     variableUseEClass = createEClass(VARIABLE_USE);
     createEReference(variableUseEClass, VARIABLE_USE__REF);
+
+    externalUseEClass = createEClass(EXTERNAL_USE);
+    createEReference(externalUseEClass, EXTERNAL_USE__REF);
+    createEReference(externalUseEClass, EXTERNAL_USE__PARAMS);
+
+    varBindingEClass = createEClass(VAR_BINDING);
+    createEReference(varBindingEClass, VAR_BINDING__EXPRESSION);
 
     plusEClass = createEClass(PLUS);
     createEReference(plusEClass, PLUS__LEFT);
@@ -514,6 +691,9 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     minusEClass = createEClass(MINUS);
     createEReference(minusEClass, MINUS__LEFT);
     createEReference(minusEClass, MINUS__RIGHT);
+
+    parenthesisEClass = createEClass(PARENTHESIS);
+    createEReference(parenthesisEClass, PARENTHESIS__EXP);
 
     multEClass = createEClass(MULT);
     createEReference(multEClass, MULT__LEFT);
@@ -556,34 +736,50 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    varBindingEClass.getESuperTypes().add(this.getBinding());
+    externalEClass.getESuperTypes().add(this.getExpression());
     letBindingEClass.getESuperTypes().add(this.getExpression());
     letBindingEClass.getESuperTypes().add(this.getBinding());
     variableUseEClass.getESuperTypes().add(this.getExpression());
+    externalUseEClass.getESuperTypes().add(this.getExpression());
+    varBindingEClass.getESuperTypes().add(this.getBinding());
     plusEClass.getESuperTypes().add(this.getExpression());
     minusEClass.getESuperTypes().add(this.getExpression());
+    parenthesisEClass.getESuperTypes().add(this.getExpression());
     multEClass.getESuperTypes().add(this.getExpression());
     divEClass.getESuperTypes().add(this.getExpression());
     mathNumberEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(mathExpEClass, MathExp.class, "MathExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMathExp_Variables(), this.getVarBinding(), null, "variables", null, 0, -1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProgram_Name(), ecorePackage.getEString(), "name", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Ext(), this.getExternal(), null, "ext", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Math(), this.getMathExp(), null, "math", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(varBindingEClass, VarBinding.class, "VarBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVarBinding_Expression(), this.getExpression(), null, "expression", null, 0, 1, VarBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(externalEClass, External.class, "External", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExternal_Name(), ecorePackage.getEString(), "name", null, 0, 1, External.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExternal_Params(), ecorePackage.getEString(), "params", null, 0, -1, External.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mathExpEClass, MathExp.class, "MathExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMathExp_Variables(), this.getBinding(), null, "variables", null, 0, -1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(bindingEClass, Binding.class, "Binding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBinding_Name(), ecorePackage.getEString(), "name", null, 0, 1, Binding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(letBindingEClass, LetBinding.class, "LetBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLetBinding_Binding(), this.getExpression(), null, "binding", null, 0, 1, LetBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLetBinding_Body(), this.getExpression(), null, "body", null, 0, 1, LetBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(bindingEClass, Binding.class, "Binding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinding_Name(), ecorePackage.getEString(), "name", null, 0, 1, Binding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(variableUseEClass, VariableUse.class, "VariableUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getVariableUse_Ref(), this.getBinding(), null, "ref", null, 0, 1, VariableUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(externalUseEClass, ExternalUse.class, "ExternalUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExternalUse_Ref(), this.getExternal(), null, "ref", null, 0, 1, ExternalUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExternalUse_Params(), this.getExpression(), null, "params", null, 0, -1, ExternalUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varBindingEClass, VarBinding.class, "VarBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVarBinding_Expression(), this.getExpression(), null, "expression", null, 0, 1, VarBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPlus_Left(), this.getExpression(), null, "left", null, 0, 1, Plus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -592,6 +788,9 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMinus_Left(), this.getExpression(), null, "left", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMinus_Right(), this.getExpression(), null, "right", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parenthesisEClass, Parenthesis.class, "Parenthesis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParenthesis_Exp(), this.getExpression(), null, "exp", null, 0, 1, Parenthesis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMult_Left(), this.getExpression(), null, "left", null, 0, 1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

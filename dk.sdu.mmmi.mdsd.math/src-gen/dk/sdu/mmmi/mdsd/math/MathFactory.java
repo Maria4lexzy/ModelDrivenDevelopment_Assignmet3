@@ -24,6 +24,24 @@ public interface MathFactory extends EFactory
   MathFactory eINSTANCE = dk.sdu.mmmi.mdsd.math.impl.MathFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Program</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Program</em>'.
+   * @generated
+   */
+  Program createProgram();
+
+  /**
+   * Returns a new object of class '<em>External</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External</em>'.
+   * @generated
+   */
+  External createExternal();
+
+  /**
    * Returns a new object of class '<em>Exp</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -31,15 +49,6 @@ public interface MathFactory extends EFactory
    * @generated
    */
   MathExp createMathExp();
-
-  /**
-   * Returns a new object of class '<em>Var Binding</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Var Binding</em>'.
-   * @generated
-   */
-  VarBinding createVarBinding();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -51,15 +60,6 @@ public interface MathFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Let Binding</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Let Binding</em>'.
-   * @generated
-   */
-  LetBinding createLetBinding();
-
-  /**
    * Returns a new object of class '<em>Binding</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,6 +69,15 @@ public interface MathFactory extends EFactory
   Binding createBinding();
 
   /**
+   * Returns a new object of class '<em>Let Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Let Binding</em>'.
+   * @generated
+   */
+  LetBinding createLetBinding();
+
+  /**
    * Returns a new object of class '<em>Variable Use</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -76,6 +85,24 @@ public interface MathFactory extends EFactory
    * @generated
    */
   VariableUse createVariableUse();
+
+  /**
+   * Returns a new object of class '<em>External Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External Use</em>'.
+   * @generated
+   */
+  ExternalUse createExternalUse();
+
+  /**
+   * Returns a new object of class '<em>Var Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Binding</em>'.
+   * @generated
+   */
+  VarBinding createVarBinding();
 
   /**
    * Returns a new object of class '<em>Plus</em>'.
@@ -94,6 +121,15 @@ public interface MathFactory extends EFactory
    * @generated
    */
   Minus createMinus();
+
+  /**
+   * Returns a new object of class '<em>Parenthesis</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parenthesis</em>'.
+   * @generated
+   */
+  Parenthesis createParenthesis();
 
   /**
    * Returns a new object of class '<em>Mult</em>'.

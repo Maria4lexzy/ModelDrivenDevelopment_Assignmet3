@@ -27,7 +27,7 @@ public interface MathExp extends EObject
 {
   /**
    * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-   * The list contents are of type {@link dk.sdu.mmmi.mdsd.math.VarBinding}.
+   * The list contents are of type {@link dk.sdu.mmmi.mdsd.math.Binding}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variables</em>' containment reference list.
@@ -35,6 +35,6 @@ public interface MathExp extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<VarBinding> getVariables();
+  EList<Binding> getVariables();
 
 } // MathExp

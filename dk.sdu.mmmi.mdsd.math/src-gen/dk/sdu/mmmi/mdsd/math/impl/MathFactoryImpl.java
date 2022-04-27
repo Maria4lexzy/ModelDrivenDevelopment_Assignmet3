@@ -65,20 +65,48 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
   {
     switch (eClass.getClassifierID())
     {
+      case MathPackage.PROGRAM: return createProgram();
+      case MathPackage.EXTERNAL: return createExternal();
       case MathPackage.MATH_EXP: return createMathExp();
-      case MathPackage.VAR_BINDING: return createVarBinding();
       case MathPackage.EXPRESSION: return createExpression();
-      case MathPackage.LET_BINDING: return createLetBinding();
       case MathPackage.BINDING: return createBinding();
+      case MathPackage.LET_BINDING: return createLetBinding();
       case MathPackage.VARIABLE_USE: return createVariableUse();
+      case MathPackage.EXTERNAL_USE: return createExternalUse();
+      case MathPackage.VAR_BINDING: return createVarBinding();
       case MathPackage.PLUS: return createPlus();
       case MathPackage.MINUS: return createMinus();
+      case MathPackage.PARENTHESIS: return createParenthesis();
       case MathPackage.MULT: return createMult();
       case MathPackage.DIV: return createDiv();
       case MathPackage.MATH_NUMBER: return createMathNumber();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Program createProgram()
+  {
+    ProgramImpl program = new ProgramImpl();
+    return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public External createExternal()
+  {
+    ExternalImpl external = new ExternalImpl();
+    return external;
   }
 
   /**
@@ -99,34 +127,10 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public VarBinding createVarBinding()
-  {
-    VarBindingImpl varBinding = new VarBindingImpl();
-    return varBinding;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public LetBinding createLetBinding()
-  {
-    LetBindingImpl letBinding = new LetBindingImpl();
-    return letBinding;
   }
 
   /**
@@ -147,10 +151,46 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
+  public LetBinding createLetBinding()
+  {
+    LetBindingImpl letBinding = new LetBindingImpl();
+    return letBinding;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public VariableUse createVariableUse()
   {
     VariableUseImpl variableUse = new VariableUseImpl();
     return variableUse;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExternalUse createExternalUse()
+  {
+    ExternalUseImpl externalUse = new ExternalUseImpl();
+    return externalUse;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VarBinding createVarBinding()
+  {
+    VarBindingImpl varBinding = new VarBindingImpl();
+    return varBinding;
   }
 
   /**
@@ -175,6 +215,18 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
   {
     MinusImpl minus = new MinusImpl();
     return minus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Parenthesis createParenthesis()
+  {
+    ParenthesisImpl parenthesis = new ParenthesisImpl();
+    return parenthesis;
   }
 
   /**

@@ -73,6 +73,21 @@ public class MathSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case MathPackage.PROGRAM:
+      {
+        Program program = (Program)theEObject;
+        T result = caseProgram(program);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.EXTERNAL:
+      {
+        External external = (External)theEObject;
+        T result = caseExternal(external);
+        if (result == null) result = caseExpression(external);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MathPackage.MATH_EXP:
       {
         MathExp mathExp = (MathExp)theEObject;
@@ -80,18 +95,17 @@ public class MathSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MathPackage.VAR_BINDING:
-      {
-        VarBinding varBinding = (VarBinding)theEObject;
-        T result = caseVarBinding(varBinding);
-        if (result == null) result = caseBinding(varBinding);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MathPackage.EXPRESSION:
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.BINDING:
+      {
+        Binding binding = (Binding)theEObject;
+        T result = caseBinding(binding);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -104,18 +118,27 @@ public class MathSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MathPackage.BINDING:
-      {
-        Binding binding = (Binding)theEObject;
-        T result = caseBinding(binding);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MathPackage.VARIABLE_USE:
       {
         VariableUse variableUse = (VariableUse)theEObject;
         T result = caseVariableUse(variableUse);
         if (result == null) result = caseExpression(variableUse);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.EXTERNAL_USE:
+      {
+        ExternalUse externalUse = (ExternalUse)theEObject;
+        T result = caseExternalUse(externalUse);
+        if (result == null) result = caseExpression(externalUse);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.VAR_BINDING:
+      {
+        VarBinding varBinding = (VarBinding)theEObject;
+        T result = caseVarBinding(varBinding);
+        if (result == null) result = caseBinding(varBinding);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -132,6 +155,14 @@ public class MathSwitch<T> extends Switch<T>
         Minus minus = (Minus)theEObject;
         T result = caseMinus(minus);
         if (result == null) result = caseExpression(minus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.PARENTHESIS:
+      {
+        Parenthesis parenthesis = (Parenthesis)theEObject;
+        T result = caseParenthesis(parenthesis);
+        if (result == null) result = caseExpression(parenthesis);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -164,6 +195,38 @@ public class MathSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Program</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Program</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProgram(Program object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>External</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>External</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExternal(External object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Exp</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -175,22 +238,6 @@ public class MathSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMathExp(MathExp object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Var Binding</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Var Binding</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVarBinding(VarBinding object)
   {
     return null;
   }
@@ -212,22 +259,6 @@ public class MathSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Let Binding</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Let Binding</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLetBinding(LetBinding object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Binding</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -244,6 +275,22 @@ public class MathSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Let Binding</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Let Binding</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLetBinding(LetBinding object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable Use</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -255,6 +302,38 @@ public class MathSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableUse(VariableUse object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>External Use</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>External Use</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExternalUse(ExternalUse object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Var Binding</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Var Binding</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVarBinding(VarBinding object)
   {
     return null;
   }
@@ -287,6 +366,22 @@ public class MathSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMinus(Minus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParenthesis(Parenthesis object)
   {
     return null;
   }
